@@ -44,18 +44,18 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-padding bg-surface"
+      className="section-padding"
     >
       <div className="max-w-5xl mx-auto">
         <p data-contact-anim className="text-accent font-semibold mb-2 tracking-wide">
           Contact
         </p>
-        <h2 data-contact-anim className="font-display text-4xl md:text-5xl font-extrabold text-text mb-4">
+        <h2 data-contact-anim className="font-display text-4xl md:text-5xl font-extrabold text-white mb-4">
           Let&apos;s Work Together
         </h2>
-        <p data-contact-anim className="text-muted text-lg mb-12 max-w-xl">
+        <p data-contact-anim className="text-white/50 text-lg mb-12 max-w-xl">
           Available for freelance projects worldwide.{' '}
-          <strong className="text-text">Replies within 12 hours.</strong>
+          <strong className="text-white">Replies within 12 hours.</strong>
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -66,8 +66,8 @@ export default function Contact() {
               { label: 'WhatsApp', value: '+880 1633-707780', href: 'https://wa.me/8801633707780' },
               { label: 'Telegram', value: '@rubayet2027', href: 'https://t.me/rubayet2027' },
             ].map((item) => (
-              <div key={item.label} data-contact-anim>
-                <p className="text-sm font-semibold text-text mb-1">{item.label}</p>
+              <div key={item.label} data-contact-anim className="glass-card p-4">
+                <p className="text-sm font-semibold text-white mb-1">{item.label}</p>
                 <a
                   href={item.href}
                   target="_blank"
@@ -81,9 +81,9 @@ export default function Contact() {
           </div>
 
           {/* Right — Form */}
-          <form onSubmit={handleSubmit} className="space-y-5" data-contact-anim>
+          <form onSubmit={handleSubmit} className="glass-card p-6 space-y-5" data-contact-anim>
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-text mb-1">
+              <label htmlFor="name" className="block text-sm font-semibold text-white mb-1">
                 Name
               </label>
               <input
@@ -93,12 +93,12 @@ export default function Contact() {
                 required
                 value={form.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition"
+                className="w-full px-4 py-3 rounded-xl glass-input transition"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-text mb-1">
+              <label htmlFor="email" className="block text-sm font-semibold text-white mb-1">
                 Email
               </label>
               <input
@@ -108,12 +108,12 @@ export default function Contact() {
                 required
                 value={form.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition"
+                className="w-full px-4 py-3 rounded-xl glass-input transition"
                 placeholder="you@example.com"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-text mb-1">
+              <label htmlFor="message" className="block text-sm font-semibold text-white mb-1">
                 Message
               </label>
               <textarea
@@ -123,7 +123,7 @@ export default function Contact() {
                 required
                 value={form.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition resize-none"
+                className="w-full px-4 py-3 rounded-xl glass-input transition resize-none"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -131,13 +131,13 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full py-3.5 bg-accent text-white font-bold rounded-xl hover:bg-accent-dark transition-colors duration-200 disabled:opacity-60"
+              className="w-full py-3.5 bg-accent text-white font-bold rounded-xl hover:bg-accent-dark transition-colors duration-200 disabled:opacity-60 shadow-lg shadow-accent/25"
             >
               {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
 
             {status === 'success' && (
-              <p className="text-green-600 font-semibold text-sm text-center animate-fade-in">
+              <p className="text-green-400 font-semibold text-sm text-center animate-fade-in">
                 ✓ Message sent! I&apos;ll get back to you within 12 hours.
               </p>
             )}

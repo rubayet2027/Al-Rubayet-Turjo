@@ -42,7 +42,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="bg-text text-white py-16 px-6 md:px-12"
+      className="glass py-16 px-6 md:px-12"
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
         {/* Brand */}

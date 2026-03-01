@@ -18,7 +18,7 @@ export default function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="p-3 rounded-xl bg-surface border border-gray-200 text-text/70 hover:text-accent hover:border-accent hover:-translate-y-1 shadow-sm transition-all duration-300"
+          className="p-3 rounded-xl glass text-white/60 hover:text-accent hover:border-accent/40 hover:-translate-y-1 transition-all duration-300"
         >
           <Icon size={20} />
         </a>

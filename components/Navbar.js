@@ -22,9 +22,8 @@ export default function Navbar() {
   /* ── GSAP fade-in on load ── */
   useEffect(() => {
     gsap.from(navRef.current, {
-      y: -60,
-      opacity: 0,
-      duration: 1,
+      y: -30,
+      duration: 0.8,
       ease: 'power3.out',
     });
   }, []);
@@ -47,16 +46,16 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-nav ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm border-b border-gray-100'
-          : 'bg-transparent'
+          ? 'shadow-lg shadow-black/20'
+          : ''
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="font-display text-2xl font-bold text-accent tracking-tight">
-          Zero<span className="text-text">.</span>
+          Zero<span className="text-white/90">.</span>
         </Link>
 
         {/* Desktop menu */}
@@ -66,7 +65,7 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className="text-sm font-semibold uppercase tracking-wider text-text/80 hover:text-accent transition-colors duration-200"
+                className="text-sm font-semibold uppercase tracking-wider text-white/70 hover:text-accent transition-colors duration-200"
               >
                 {item.label}
               </a>
@@ -76,7 +75,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleClick(e, '#contact')}
-              className="ml-2 px-5 py-2.5 bg-accent text-white text-sm font-bold rounded-lg hover:bg-accent-dark transition-colors duration-200"
+              className="ml-2 px-5 py-2.5 bg-accent text-white text-sm font-bold rounded-lg hover:bg-accent-dark transition-colors duration-200 shadow-lg shadow-accent/25"
             >
               Hire Me
             </a>
@@ -85,7 +84,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+          className="md:hidden p-2 rounded-lg hover:bg-white/10 transition text-white"
           aria-label="Toggle menu"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
@@ -101,14 +100,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-lg border-t border-gray-100 animate-fade-in">
+        <div className="md:hidden glass border-t border-white/10 animate-fade-in">
           <ul className="flex flex-col items-center gap-4 py-6">
             {navItems.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className="text-base font-semibold text-text/80 hover:text-accent transition-colors"
+                  className="text-base font-semibold text-white/70 hover:text-accent transition-colors"
                 >
                   {item.label}
                 </a>

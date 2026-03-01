@@ -53,11 +53,11 @@ export default function Education() {
     <section
       id="education"
       ref={sectionRef}
-      className="section-padding bg-white"
+      className="section-padding"
     >
       <div className="max-w-5xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Education</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-text mb-12">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-12">
           Academic Background
         </h2>
 
@@ -65,17 +65,17 @@ export default function Education() {
           {educationData.map((edu, i) => (
             <div key={i} data-edu-card className="relative mb-12 last:mb-0">
               {/* Timeline dot */}
-              <span className="absolute -left-[2.6rem] top-1.5 w-5 h-5 bg-accent rounded-full border-4 border-white shadow" />
+              <span className="absolute -left-[2.6rem] top-1.5 w-5 h-5 bg-accent rounded-full border-4 border-[#0f172a] shadow shadow-accent/50" />
 
-              <div className="p-6 bg-surface rounded-2xl border border-gray-100">
-                <span className="inline-block px-3 py-1 text-xs font-bold text-accent bg-accent/10 rounded-full mb-3">
+              <div className="glass-card p-6">
+                <span className="inline-block px-3 py-1 text-xs font-bold text-accent bg-accent/15 rounded-full mb-3">
                   {edu.period}
                 </span>
-                <h3 className="text-xl font-bold text-text">{edu.degree}</h3>
-                <p className="text-muted font-medium mt-1 mb-4">{edu.institution}</p>
+                <h3 className="text-xl font-bold text-white">{edu.degree}</h3>
+                <p className="text-white/50 font-medium mt-1 mb-4">{edu.institution}</p>
                 <ul className="space-y-2">
                   {edu.highlights.map((h, j) => (
-                    <li key={j} className="flex items-start gap-2 text-muted text-sm leading-relaxed">
+                    <li key={j} className="flex items-start gap-2 text-white/50 text-sm leading-relaxed">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                       {h}
                     </li>

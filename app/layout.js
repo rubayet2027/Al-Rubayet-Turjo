@@ -51,6 +51,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="overflow-x-hidden">
+        {/* Animated gradient mesh background for glassmorphism depth */}
+        <div className="bg-mesh" aria-hidden="true" />
         <LenisProvider>
           <Navbar />
           <main>{children}</main>

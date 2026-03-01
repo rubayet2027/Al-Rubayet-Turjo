@@ -33,11 +33,11 @@ export default function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className="section-padding bg-white"
+      className="section-padding"
     >
       <div className="max-w-6xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Projects</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-text mb-12">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-12">
           Featured Work
         </h2>
 
@@ -46,32 +46,32 @@ export default function Projects() {
             <div
               key={project.slug}
               data-project-card
-              className="group bg-surface rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-400"
+              className="group glass-card glass-card-hover overflow-hidden"
             >
               {/* Image placeholder */}
               <div className="h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                <span className="text-accent/50 font-display text-lg font-bold">
+                <span className="text-accent/60 font-display text-lg font-bold">
                   {project.title}
                 </span>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-text mb-1 group-hover:text-accent transition-colors">
+                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-accent transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted mb-4">{project.tagline}</p>
+                <p className="text-sm text-white/50 mb-4">{project.tagline}</p>
 
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {project.tech.slice(0, 4).map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-md"
+                      className="px-2 py-1 text-xs font-medium bg-accent/15 text-accent rounded-md"
                     >
                       {t}
                     </span>
                   ))}
                   {project.tech.length > 4 && (
-                    <span className="px-2 py-1 text-xs font-medium bg-gray-100 text-muted rounded-md">
+                    <span className="px-2 py-1 text-xs font-medium bg-white/10 text-white/50 rounded-md">
                       +{project.tech.length - 4}
                     </span>
                   )}

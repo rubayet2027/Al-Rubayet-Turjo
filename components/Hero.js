@@ -36,7 +36,7 @@ export default function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 section-padding pt-32"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 section-padding pt-32 relative"
     >
       {/* ── Left: Text ── */}
       <div className="flex-1 max-w-2xl">
@@ -45,14 +45,14 @@ export default function Hero() {
         </p>
 
         <div ref={headingRef}>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-6.5xl font-extrabold text-text leading-[1.08] mb-6">
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-6.5xl font-extrabold text-white leading-[1.08] mb-6">
             <span className="block">Full Stack Developer</span>
             <span className="block">for Modern SaaS</span>
             <span className="block text-accent">&amp; Automation</span>
           </h1>
         </div>
 
-        <p ref={subRef} className="text-lg md:text-xl text-muted max-w-lg mb-8 leading-relaxed">
+        <p ref={subRef} className="text-lg md:text-xl text-white/60 max-w-lg mb-8 leading-relaxed">
           I build scalable web applications, AI-powered automation systems, and secure payment
           systems for startups and businesses worldwide.
         </p>
@@ -66,7 +66,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="px-7 py-3.5 bg-text text-white font-bold rounded-xl hover:bg-accent transition-colors duration-300"
+            className="px-7 py-3.5 glass text-white font-bold rounded-xl hover:bg-white/15 transition-all duration-300"
           >
             Hire Me
           </a>
@@ -74,7 +74,7 @@ export default function Hero() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-3.5 border-2 border-text text-text font-bold rounded-xl hover:bg-text hover:text-white transition-all duration-300"
+            className="px-7 py-3.5 border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300"
           >
             Download Resume
           </a>
@@ -84,16 +84,12 @@ export default function Hero() {
       </div>
 
       {/* ── Right: Image ── */}
-      <div ref={imgRef} className="flex-1 flex items-center justify-center max-w-md">
-        <div className="relative">
-          {/* Decorative accent square behind image */}
-          <div className="absolute -inset-4 bg-accent/10 rounded-3xl -z-10" />
-          <img
-            src="/profile.jpg"
-            alt="Al Rubayet Turjo — Full Stack Developer"
-            className="w-72 h-80 sm:w-80 sm:h-96 object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
-          />
-        </div>
+      <div ref={imgRef} className="flex-1 flex items-center justify-center lg:justify-end">
+        <img
+          src="/profile.png"
+          alt="Al Rubayet Turjo — Full Stack Developer"
+          className="w-full max-w-sm lg:max-w-md xl:max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:drop-shadow-[0_25px_50px_rgba(37,99,235,0.45)] transition-all duration-700"
+        />
       </div>
     </section>
   );

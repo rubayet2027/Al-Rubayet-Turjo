@@ -85,11 +85,11 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="section-padding bg-surface"
+      className="section-padding"
     >
       <div className="max-w-6xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Skills</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-text mb-12">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-12">
           Technologies I Work With
         </h2>
 
@@ -98,17 +98,17 @@ export default function Skills() {
             <div
               key={cat.title}
               data-skill-card
-              className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+              className="glass-card glass-card-hover p-6"
             >
-              <h3 className="text-lg font-bold text-text mb-4">{cat.title}</h3>
+              <h3 className="text-lg font-bold text-white mb-4">{cat.title}</h3>
               <div className="space-y-3">
                 {cat.skills.map((s) => (
                   <div key={s.name}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium text-text">{s.name}</span>
-                      <span className="text-xs font-semibold text-muted">{s.level}%</span>
+                      <span className="text-sm font-medium text-white/80">{s.name}</span>
+                      <span className="text-xs font-semibold text-white/50">{s.level}%</span>
                     </div>
-                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-accent rounded-full transition-all duration-700"
                         style={{ width: `${s.level}%` }}
