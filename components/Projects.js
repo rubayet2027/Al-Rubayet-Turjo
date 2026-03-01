@@ -53,11 +53,19 @@ export default function Projects() {
               data-project-card
               className="group glass-card glass-card-hover overflow-hidden"
             >
-              {/* Image placeholder */}
-              <div className="h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                <span className="text-accent/60 font-display text-lg font-bold">
-                  {project.title}
-                </span>
+              {/* Project Image */}
+              <div className="h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center overflow-hidden">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <span className="text-accent/60 font-display text-lg font-bold">
+                    {project.title}
+                  </span>
+                )}
               </div>
 
               <div className="p-4 sm:p-6">

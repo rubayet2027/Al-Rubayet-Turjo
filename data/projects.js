@@ -6,7 +6,7 @@ export const projectsData = [
     description:
       'A multi-role creative contest platform where creators host competitions across 18+ categories — design, photography, writing, and more. Participants submit work, compete for prizes, and climb leaderboards.',
     tech: ['React.js', 'Firebase', 'Stripe', 'Tailwind CSS', 'Node.js'],
-    image: '/projects/creatix.jpg',
+    image: '/Creatix.png',
     problem:
       'Creative professionals and hobbyists lacked a unified platform to discover, enter, and manage creative contests with secure payments, fair judging, and real-time competition tracking.',
     solution:
@@ -30,7 +30,7 @@ export const projectsData = [
     description:
       'An AI-driven learning platform that organizes university course materials, provides intelligent semantic search, and generates validated educational content — helping students learn smarter.',
     tech: ['React.js', 'Firebase', 'OpenAI API', 'Tailwind CSS', 'Node.js'],
-    image: '/projects/eduxolve.jpg',
+    image: '/Eduxolve.png',
     problem:
       'University students struggle with scattered course materials, inefficient study methods, and limited access to supplementary learning resources tailored to their curriculum.',
     solution:
@@ -54,7 +54,7 @@ export const projectsData = [
     description:
       'A professional tech agency website showcasing full-stack development, UI/UX design, AI automation, and bot development services — serving 100+ clients with 500+ completed projects.',
     tech: ['React.js', 'Firebase', 'Tailwind CSS', 'Framer Motion', 'Node.js'],
-    image: '/projects/xenzolve.jpg',
+    image: '/Xenzolve.png',
     problem:
       'Tech agencies need a modern, high-converting web presence that effectively communicates their services, builds trust with testimonials, and streamlines client onboarding.',
     solution:
@@ -78,7 +78,7 @@ export const projectsData = [
     description:
       'An agricultural marketplace platform that connects 10K+ farmers directly with buyers, eliminating intermediaries to ensure fair pricing and transparent crop trading across 100+ districts.',
     tech: ['React.js', 'Firebase', 'Tailwind CSS', 'Node.js', 'Express.js'],
-    image: '/projects/krishilink.jpg',
+    image: '/KrishiLink.png',
     problem:
       'Farmers in Bangladesh face exploitation from intermediaries, leading to unfair pricing and limited market access. Buyers struggle to find verified, quality crop sources directly.',
     solution:
@@ -102,7 +102,7 @@ export const projectsData = [
     description:
       'A tree plantation e-commerce and environmental campaign platform with 30+ tree species across 10 categories, a donation system, and an impact tracker — supporting 500K+ trees planted worldwide.',
     tech: ['React.js', 'Tailwind CSS', 'JavaScript', 'Netlify', 'CSS3'],
-    image: '/projects/green-earth.jpg',
+    image: '/GreenEarth.png',
     problem:
       'Climate change initiatives lack engaging digital platforms that make it easy for individuals to contribute to reforestation efforts and track the environmental impact of their donations.',
     solution:
@@ -126,7 +126,7 @@ export const projectsData = [
     description:
       'A skill exchange marketplace where users can discover local and remote skill providers, book sessions, and offer their own expertise — from guitar lessons to photography to coding.',
     tech: ['React.js', 'Firebase', 'Vite', 'Tailwind CSS', 'Node.js'],
-    image: '/projects/skill-swap.jpg',
+    image: null,
     problem:
       'Finding affordable, personalized skill learning opportunities is difficult, and talented individuals lack a platform to monetize their expertise through peer-to-peer teaching.',
     solution:
@@ -150,7 +150,7 @@ export const projectsData = [
     description:
       'A sleek app showcase landing page for AppHero.IO featuring trending app displays with download stats, ratings, and trust metrics — designed to highlight a portfolio of 132+ active apps with 29.6M+ downloads.',
     tech: ['React.js', 'Vite', 'Tailwind CSS', 'Netlify', 'CSS3'],
-    image: '/projects/apphero.jpg',
+    image: '/AppHero.png',
     problem:
       'App development companies need a polished, data-driven landing page that builds credibility through real metrics and showcases their app portfolio in an engaging way.',
     solution:

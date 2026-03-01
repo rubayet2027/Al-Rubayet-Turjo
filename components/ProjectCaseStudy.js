@@ -62,12 +62,22 @@ export default function ProjectCaseStudy({ project }) {
           ))}
         </div>
 
-        {/* Image placeholder */}
+        {/* Project Image */}
         <div
           data-cs-anim
-          className="h-48 sm:h-64 md:h-80 rounded-2xl glass-card flex items-center justify-center mb-8 sm:mb-12 bg-gradient-to-br from-accent/10 to-transparent"
+          className="h-48 sm:h-64 md:h-80 rounded-2xl glass-card overflow-hidden mb-8 sm:mb-12 bg-gradient-to-br from-accent/10 to-transparent"
         >
-          <span className="text-accent/40 font-display text-2xl font-bold">Project Screenshot</span>
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-accent/40 font-display text-2xl font-bold">Project Screenshot</span>
+            </div>
+          )}
         </div>
 
         {/* Description */}
