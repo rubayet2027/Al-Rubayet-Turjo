@@ -35,7 +35,7 @@ export default function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-14 px-4 sm:px-6 md:px-12 lg:px-20 pt-24 pb-10 relative overflow-hidden"
+      className="h-screen flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-14 px-4 sm:px-6 md:px-12 lg:px-20 relative overflow-hidden"
     >
       {/* ── Left: Text ── */}
       <div className="flex-1 max-w-2xl">
@@ -82,14 +82,14 @@ export default function Hero() {
         <SocialLinks />
       </div>
 
-      {/* ── Right: Image ── */}
-      <div ref={imgRef} className="flex-shrink-0 flex items-center justify-center lg:justify-end">
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-accent/15 dark:bg-accent/10 blur-2xl scale-125" />
+      {/* ── Right: Image (50% of hero width) ── */}
+      <div ref={imgRef} className="w-1/2 flex-shrink-0 flex items-center justify-center lg:justify-end">
+        <div className="relative w-full max-w-[32rem] aspect-square">
+          <div className="absolute inset-[-25%] rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" />
           <img
             src="/profile.png"
             alt="Al Rubayet Turjo — Full Stack Developer"
-            className="relative w-52 sm:w-60 md:w-68 lg:w-80 xl:w-[22rem] h-auto object-contain rounded-full shadow-xl transition-all duration-700"
+            className="relative w-full h-full object-contain rounded-full shadow-xl transition-all duration-700"
           />
         </div>
       </div>
