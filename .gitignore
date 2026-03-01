@@ -43,3 +43,4 @@ ehthumbs.db
 
 # package lock (optional — remove this line if you want to commit it)
 # package-lock.json
+.env*.local
