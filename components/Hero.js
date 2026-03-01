@@ -84,11 +84,14 @@ export default function Hero() {
 
       {/* ── Right: Image ── */}
       <div ref={imgRef} className="flex-shrink-0 flex items-center justify-center lg:justify-end">
-        <img
-          src="/profile.png"
-          alt="Al Rubayet Turjo — Full Stack Developer"
-          className="w-44 sm:w-52 md:w-60 lg:w-72 xl:w-80 h-auto object-contain rounded-full border-2 border-white/10 dark:border-white/[0.06] shadow-xl transition-all duration-700"
-        />
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full bg-accent/15 dark:bg-accent/10 blur-2xl scale-125" />
+          <img
+            src="/profile.png"
+            alt="Al Rubayet Turjo — Full Stack Developer"
+            className="relative w-52 sm:w-60 md:w-68 lg:w-80 xl:w-[22rem] h-auto object-contain rounded-full shadow-xl transition-all duration-700"
+          />
+        </div>
       </div>
     </section>
   );
