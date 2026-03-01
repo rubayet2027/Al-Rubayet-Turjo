@@ -1,22 +1,22 @@
-import HomePage from './(home)/page';
-import AboutPage from './(about)/page';
-import SkillsPage from './(skills)/page';
-import EducationPage from './(education)/page';
-import ExperiencePage from './(experience)/page';
-import ProjectsPage from './projects/page';
-import ContactPage from './(contact)/page';
-import Footer from '../components/Footer';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Skills from '@/components/Skills';
+import Education from '@/components/Education';
+import Experience from '@/components/Experience';
+import Projects from '@/components/Projects';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
-export default function Page() {
+export default function HomePage() {
   return (
     <>
-      <HomePage />
-      <AboutPage />
-      <SkillsPage />
-      <EducationPage />
-      <ExperiencePage />
-      <ProjectsPage />
-      <ContactPage />
+      <Hero />
+      <About />
+      <Skills />
+      <Education />
+      <Experience />
+      <Projects />
+      <Contact />
       <Footer />
     </>
   );

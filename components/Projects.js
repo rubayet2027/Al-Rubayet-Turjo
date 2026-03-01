@@ -1,57 +1,95 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { useRouter } from 'next/navigation';
+'use client';
 
-const projects = [
-  {
-    name: 'Multi-Role Contest Platform',
-    image: '/contest-platform.jpg',
-    description: 'A scalable contest platform with entry fees, admin approval, and withdrawals.',
-    slug: 'multi-role-contest-platform',
-  },
-  {
-    name: 'AI Social Media Automation System',
-    image: '/ai-social-media.jpg',
-    description: 'Automates social media content posting using AI and n8n.',
-    slug: 'ai-social-media-automation-system',
-  },
-  {
-    name: 'SaaS Expense Tracker Dashboard',
-    image: '/expense-tracker.jpg',
-    description: 'Analytics dashboard for tracking expenses, built with React and Firebase.',
-    slug: 'saas-expense-tracker-dashboard',
-  },
-];
+import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+import { projectsData } from '@/data/projects';
 
 export default function Projects() {
-  const gridRef = useRef(null);
-  const router = useRouter();
+  const sectionRef = useRef(null);
+
   useEffect(() => {
-    gsap.from(gridRef.current.children, {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power2.out',
-    });
+    const ctx = gsap.context(() => {
+      gsap.from('[data-project-card]', {
+        y: 70,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 78%',
+        },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
   }, []);
+
   return (
-    <section id="projects" className="max-w-5xl mx-auto py-24 px-6">
-      <h2 className="font-display text-4xl font-bold mb-8 text-black">Projects</h2>
-      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map(project => (
-          <div key={project.slug} className="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:scale-105 transition-transform">
-            <img src={project.image} alt={project.name} className="w-full h-40 object-cover rounded-lg mb-4" />
-            <div className="font-bold text-xl text-accent mb-2">{project.name}</div>
-            <div className="text-gray-700 mb-4">{project.description}</div>
-            <button
-              className="px-4 py-2 bg-accent text-white font-bold rounded-lg hover:scale-105 transition-transform"
-              onClick={() => router.push(`/projects/${project.slug}`)}
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="section-padding bg-white"
+    >
+      <div className="max-w-6xl mx-auto">
+        <p className="text-accent font-semibold mb-2 tracking-wide">Projects</p>
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-text mb-12">
+          Featured Work
+        </h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project) => (
+            <div
+              key={project.slug}
+              data-project-card
+              className="group bg-surface rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-400"
             >
-              View Case Study
-            </button>
-          </div>
-        ))}
+              {/* Image placeholder */}
+              <div className="h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                <span className="text-accent/50 font-display text-lg font-bold">
+                  {project.title}
+                </span>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-text mb-1 group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted mb-4">{project.tagline}</p>
+
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.tech.slice(0, 4).map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-md"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {project.tech.length > 4 && (
+                    <span className="px-2 py-1 text-xs font-medium bg-gray-100 text-muted rounded-md">
+                      +{project.tech.length - 4}
+                    </span>
+                  )}
+                </div>
+
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
+                >
+                  View Details
+                  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

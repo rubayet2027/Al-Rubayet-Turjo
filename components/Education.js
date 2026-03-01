@@ -1,48 +1,90 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
 
-const timeline = [
+const educationData = [
   {
-    year: '2023 – Present',
     degree: 'BSc in Computer Science & Engineering',
     institution: 'Chittagong University of Engineering & Technology (CUET)',
-    details: ['Data Structures', 'OOP', 'Database Systems', 'Software Engineering'],
+    period: '2023 – Present',
+    highlights: [
+      'Coursework: Data Structures & Algorithms, OOP, Database Systems, Software Engineering',
+      'Active in competitive programming and university tech events',
+      'Participated in BUET Inter-University Hackathon',
+    ],
+  },
+  {
+    degree: 'Higher Secondary Certificate (HSC) — Science',
+    institution: 'Chittagong College, Chittagong',
+    period: '2020 – 2022',
+    highlights: [
+      'Focused on Physics, Chemistry, Mathematics & ICT',
+      'Developed early interest in programming and problem-solving',
+      'Participated in regional science olympiads',
+    ],
   },
 ];
 
 export default function Education() {
-  const timelineRef = useRef(null);
+  const sectionRef = useRef(null);
+
   useEffect(() => {
-    gsap.from(timelineRef.current.children, {
-      scrollTrigger: {
-        trigger: timelineRef.current,
-        start: 'top 80%',
-      },
-      x: -40,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power2.out',
-    });
+    const ctx = gsap.context(() => {
+      gsap.from('[data-edu-card]', {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
   }, []);
+
   return (
-    <section id="education" className="max-w-3xl mx-auto py-24 px-6">
-      <h2 className="font-display text-4xl font-bold mb-8 text-black">Education</h2>
-      <div ref={timelineRef} className="relative border-l-4 border-accent pl-8">
-        {timeline.map((item, idx) => (
-          <div key={idx} className="mb-10">
-            <div className="font-bold text-xl text-accent">{item.year}</div>
-            <div className="font-display text-2xl text-black font-semibold mt-2">{item.degree}</div>
-            <div className="text-lg text-gray-700">{item.institution}</div>
-            <ul className="mt-2 list-disc list-inside text-gray-600">
-              {item.details.map(detail => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+    <section
+      id="education"
+      ref={sectionRef}
+      className="section-padding bg-white"
+    >
+      <div className="max-w-5xl mx-auto">
+        <p className="text-accent font-semibold mb-2 tracking-wide">Education</p>
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-text mb-12">
+          Academic Background
+        </h2>
+
+        <div className="relative border-l-2 border-accent/30 pl-8 ml-4">
+          {educationData.map((edu, i) => (
+            <div key={i} data-edu-card className="relative mb-12 last:mb-0">
+              {/* Timeline dot */}
+              <span className="absolute -left-[2.6rem] top-1.5 w-5 h-5 bg-accent rounded-full border-4 border-white shadow" />
+
+              <div className="p-6 bg-surface rounded-2xl border border-gray-100">
+                <span className="inline-block px-3 py-1 text-xs font-bold text-accent bg-accent/10 rounded-full mb-3">
+                  {edu.period}
+                </span>
+                <h3 className="text-xl font-bold text-text">{edu.degree}</h3>
+                <p className="text-muted font-medium mt-1 mb-4">{edu.institution}</p>
+                <ul className="space-y-2">
+                  {edu.highlights.map((h, j) => (
+                    <li key={j} className="flex items-start gap-2 text-muted text-sm leading-relaxed">
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
