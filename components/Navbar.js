@@ -56,20 +56,20 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
         {/* Logo */}
         <Link href="/" className="font-display text-2xl font-bold text-accent tracking-tight">
           Zero<span className="text-slate-800 dark:text-white/90">.</span>
         </Link>
 
         {/* Desktop menu */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-3 xl:gap-5">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className="text-sm font-semibold uppercase tracking-wider text-slate-600 dark:text-white/70 hover:text-accent transition-colors duration-200"
+                className="text-xs xl:text-sm font-semibold uppercase tracking-wider text-slate-600 dark:text-white/70 hover:text-accent transition-colors duration-200"
               >
                 {item.label}
               </a>
@@ -108,11 +108,11 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile: theme toggle + hamburger */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-slate-600 dark:text-white"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-slate-600 dark:text-white"
           >
             {theme === 'dark' ? (
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@ export default function Navbar() {
             )}
           </button>
           <button
-            className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-slate-800 dark:text-white"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-slate-800 dark:text-white"
             aria-label="Toggle menu"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -143,14 +143,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden glass border-t border-slate-200 dark:border-white/10 animate-fade-in">
-          <ul className="flex flex-col items-center gap-4 py-6">
+        <div className="lg:hidden glass border-t border-slate-200 dark:border-white/10 animate-fade-in">
+          <ul className="flex flex-col items-center gap-1 py-4">
             {navItems.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className="text-base font-semibold text-slate-600 dark:text-white/70 hover:text-accent transition-colors"
+                  className="block px-6 py-3 min-h-[44px] text-base font-semibold text-slate-600 dark:text-white/70 hover:text-accent transition-colors"
                 >
                   {item.label}
                 </a>
@@ -160,7 +160,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => handleClick(e, '#contact')}
-                className="px-6 py-2.5 bg-accent text-white font-bold rounded-lg"
+                className="inline-block mt-2 px-6 py-3 min-h-[44px] bg-accent text-white font-bold rounded-lg"
               >
                 Hire Me
               </a>

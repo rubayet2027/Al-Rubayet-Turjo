@@ -45,8 +45,8 @@ export default function About() {
           Crafting Digital Experiences<br className="hidden md:block" /> That Scale.
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          <div className="space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+          <div className="space-y-4 sm:space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-[0.938rem] sm:text-base md:text-lg">
             <p data-about-anim>
               I&apos;m <strong className="text-slate-900 dark:text-white">Al Rubayet Turjo</strong> (Zero) — a passionate
               Full Stack Web Developer &amp; AI Automation Specialist currently pursuing my BSc in
@@ -66,7 +66,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-lg">
+          <div className="space-y-4 sm:space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-[0.938rem] sm:text-base md:text-lg">
             <p data-about-anim>
               I specialize in <strong className="text-slate-900 dark:text-white">AI automation</strong>: building
               intelligent workflows that generate, schedule, and post content autonomously —
@@ -91,7 +91,7 @@ export default function About() {
         </div>
 
         {/* Quick stats */}
-        <div data-about-anim className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div data-about-anim className="mt-10 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {[
             { num: '10+', label: 'Projects Delivered' },
             { num: '5+', label: 'Technologies' },
@@ -100,10 +100,10 @@ export default function About() {
           ].map(({ num, label }) => (
             <div
               key={label}
-              className="glass-card glass-card-hover p-6 text-center"
+              className="glass-card glass-card-hover p-4 sm:p-6 text-center"
             >
-              <p className="font-display text-3xl font-extrabold text-accent">{num}</p>
-              <p className="text-sm text-slate-400 dark:text-white/50 mt-1 font-medium">{label}</p>
+              <p className="font-display text-2xl sm:text-3xl font-extrabold text-accent">{num}</p>
+              <p className="text-xs sm:text-sm text-slate-400 dark:text-white/50 mt-1 font-medium">{label}</p>
             </div>
           ))}
         </div>

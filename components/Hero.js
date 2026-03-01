@@ -35,16 +35,16 @@ export default function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 px-5 sm:px-6 md:px-12 lg:px-20 pt-24 pb-10 relative overflow-hidden"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-14 px-4 sm:px-6 md:px-12 lg:px-20 pt-24 pb-10 relative overflow-hidden"
     >
       {/* ── Left: Text ── */}
       <div className="flex-1 max-w-2xl">
-        <p className="text-accent font-semibold text-lg mb-4 tracking-wide">
+        <p className="text-accent font-semibold text-base sm:text-lg mb-3 sm:mb-4 tracking-wide">
           Hi, I&apos;m Al Rubayet Turjo
         </p>
 
         <div ref={headingRef}>
-          <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-6.5xl font-extrabold text-slate-900 dark:text-white leading-[1.08] mb-5 sm:mb-6">
+          <h1 className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-6.5xl font-extrabold text-slate-900 dark:text-white leading-[1.08] mb-4 sm:mb-6">
             <span className="block">Full Stack Developer</span>
             <span className="block">for Modern SaaS</span>
             <span className="block text-accent">&amp; Automation</span>
@@ -84,14 +84,11 @@ export default function Hero() {
 
       {/* ── Right: Image ── */}
       <div ref={imgRef} className="flex-shrink-0 flex items-center justify-center lg:justify-end">
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-accent/20 blur-3xl scale-110" />
-          <img
-            src="/profile.png"
-            alt="Al Rubayet Turjo — Full Stack Developer"
-            className="relative w-48 sm:w-56 md:w-64 lg:w-72 xl:w-80 h-auto object-contain rounded-full border-4 border-white/20 dark:border-white/10 shadow-[0_8px_32px_rgba(37,99,235,0.35)] backdrop-blur-sm bg-white/5 dark:bg-white/5 hover:shadow-[0_12px_48px_rgba(37,99,235,0.5)] transition-all duration-700"
-          />
-        </div>
+        <img
+          src="/profile.png"
+          alt="Al Rubayet Turjo — Full Stack Developer"
+          className="w-44 sm:w-52 md:w-60 lg:w-72 xl:w-80 h-auto object-contain rounded-full border-2 border-white/10 dark:border-white/[0.06] shadow-xl transition-all duration-700"
+        />
       </div>
     </section>
   );

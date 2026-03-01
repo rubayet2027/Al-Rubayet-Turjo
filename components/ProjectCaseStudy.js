@@ -48,10 +48,10 @@ export default function ProjectCaseStudy({ project }) {
         </Link>
 
         {/* Header */}
-        <h1 data-cs-anim className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-3">
+        <h1 data-cs-anim className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-3">
           {project.title}
         </h1>
-        <p data-cs-anim className="text-xl text-slate-400 dark:text-white/50 mb-8">{project.tagline}</p>
+        <p data-cs-anim className="text-base sm:text-lg md:text-xl text-slate-400 dark:text-white/50 mb-6 sm:mb-8">{project.tagline}</p>
 
         {/* Tech stack */}
         <div data-cs-anim className="flex flex-wrap gap-2 mb-10">
@@ -65,15 +65,15 @@ export default function ProjectCaseStudy({ project }) {
         {/* Image placeholder */}
         <div
           data-cs-anim
-          className="h-64 md:h-80 rounded-2xl glass-card flex items-center justify-center mb-12 bg-gradient-to-br from-accent/10 to-transparent"
+          className="h-48 sm:h-64 md:h-80 rounded-2xl glass-card flex items-center justify-center mb-8 sm:mb-12 bg-gradient-to-br from-accent/10 to-transparent"
         >
           <span className="text-accent/40 font-display text-2xl font-bold">Project Screenshot</span>
         </div>
 
         {/* Description */}
-        <div data-cs-anim className="glass-card p-8 mb-10">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3">About This Project</h2>
-          <p className="text-slate-500 dark:text-white/60 leading-relaxed text-lg">{project.description}</p>
+        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">About This Project</h2>
+          <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{project.description}</p>
         </div>
 
         {/* Sections */}
@@ -81,18 +81,18 @@ export default function ProjectCaseStudy({ project }) {
           { heading: 'Problem Statement', body: project.problem },
           { heading: 'Solution', body: project.solution },
         ].map(({ heading, body }) => (
-          <div key={heading} data-cs-anim className="glass-card p-8 mb-10">
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3">{heading}</h2>
-            <p className="text-slate-500 dark:text-white/60 leading-relaxed text-lg">{body}</p>
+          <div key={heading} data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">{heading}</h2>
+            <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{body}</p>
           </div>
         ))}
 
         {/* Key Features */}
-        <div data-cs-anim className="glass-card p-8 mb-10">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-4">Key Features</h2>
+        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">Key Features</h2>
           <ul className="space-y-3">
             {project.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-3 text-slate-500 dark:text-white/60 text-lg leading-relaxed">
+              <li key={i} className="flex items-start gap-3 text-slate-500 dark:text-white/60 text-base sm:text-lg leading-relaxed">
                 <span className="mt-2 w-2 h-2 rounded-full bg-accent shrink-0" />
                 {f}
               </li>
@@ -101,24 +101,24 @@ export default function ProjectCaseStudy({ project }) {
         </div>
 
         {/* Challenges */}
-        <div data-cs-anim className="glass-card p-8 mb-10">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3">Challenges</h2>
-          <p className="text-slate-500 dark:text-white/60 leading-relaxed text-lg">{project.challenges}</p>
+        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Challenges</h2>
+          <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{project.challenges}</p>
         </div>
 
         {/* Future Improvements */}
-        <div data-cs-anim className="glass-card p-8 mb-12">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3">Future Improvements</h2>
-          <p className="text-slate-500 dark:text-white/60 leading-relaxed text-lg">{project.future}</p>
+        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-12">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Future Improvements</h2>
+          <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{project.future}</p>
         </div>
 
         {/* Links */}
-        <div data-cs-anim className="flex flex-wrap gap-4">
+        <div data-cs-anim className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a
             href={project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : '#'}
             target="_blank"
             rel="noopener noreferrer"
-            className={`px-7 py-3.5 font-bold rounded-xl transition-colors ${
+            className={`px-5 sm:px-7 py-3 sm:py-3.5 font-bold rounded-xl transition-colors text-center ${
               project.liveUrl && project.liveUrl !== '#'
                 ? 'bg-accent text-white hover:bg-accent-dark shadow-lg shadow-accent/25'
                 : 'glass text-slate-400 dark:text-white/40 cursor-not-allowed'
@@ -130,7 +130,7 @@ export default function ProjectCaseStudy({ project }) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-7 py-3.5 border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-bold rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+            className="px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-bold rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-all text-center"
           >
             View on GitHub
           </a>

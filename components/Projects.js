@@ -46,7 +46,7 @@ export default function Projects() {
           Featured Work
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projectsData.map((project) => (
             <div
               key={project.slug}
@@ -60,8 +60,8 @@ export default function Projects() {
                 </span>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-accent transition-colors">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-accent transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-sm text-slate-400 dark:text-white/50 mb-4">{project.tagline}</p>

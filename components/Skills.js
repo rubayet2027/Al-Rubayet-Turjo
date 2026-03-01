@@ -108,13 +108,13 @@ export default function Skills() {
             <div
               key={stack.title}
               data-skill-card
-              className="glass-card glass-card-hover p-6"
+              className="glass-card glass-card-hover p-4 sm:p-6"
             >
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-5 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-4 sm:mb-5 flex items-center gap-2">
                 <span className="text-xl">{stack.icon}</span>
                 {stack.title}
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
                 {stack.skills.map((s) => {
                   const Icon = s.icon;
                   return (

@@ -84,12 +84,12 @@ export default function Contact() {
         <h2 data-contact-anim className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
           Let&apos;s Work Together
         </h2>
-        <p data-contact-anim className="text-slate-400 dark:text-white/50 text-lg mb-12 max-w-xl">
+        <p data-contact-anim className="text-slate-400 dark:text-white/50 text-base sm:text-lg mb-8 sm:mb-12 max-w-xl">
           Available for freelance projects worldwide.{' '}
           <strong className="text-slate-900 dark:text-white">Replies within 12 hours.</strong>
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
           {/* Left — Info */}
           <div className="space-y-6">
             {contactItems.map((item) => {
@@ -121,7 +121,7 @@ export default function Contact() {
           </div>
 
           {/* Right — Form */}
-          <form onSubmit={handleSubmit} className="glass-card p-6 space-y-5" data-contact-anim>
+          <form onSubmit={handleSubmit} className="glass-card p-4 sm:p-6 space-y-4 sm:space-y-5" data-contact-anim>
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-slate-900 dark:text-white mb-1">
                 Name

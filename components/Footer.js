@@ -46,9 +46,9 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="glass py-16 px-6 md:px-12"
+      className="glass py-12 sm:py-16 px-4 sm:px-6 md:px-12"
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 md:gap-12">
         {/* Brand */}
         <div>
           <p className="font-display text-2xl font-bold mb-3">
@@ -92,7 +92,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-slate-200 dark:border-white/10 text-center">
+      <div className="max-w-6xl mx-auto mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-200 dark:border-white/10 text-center">
         <p className="text-slate-400 dark:text-white/40 text-sm">
           © {new Date().getFullYear()} Al Rubayet Turjo. All rights reserved.
         </p>

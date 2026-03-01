@@ -67,17 +67,17 @@ export default function Experience() {
           Professional Journey
         </h2>
 
-        <div className="relative border-l-2 border-accent/30 pl-8 ml-4">
+        <div className="relative border-l-2 border-accent/30 pl-6 sm:pl-8 ml-3 sm:ml-4">
           {experiences.map((exp, i) => (
-            <div key={i} data-exp-card className="relative mb-12 last:mb-0">
-              <span className="absolute -left-[2.6rem] top-1.5 w-5 h-5 bg-accent rounded-full border-4 border-white dark:border-[#0f172a] shadow shadow-accent/50" />
+            <div key={i} data-exp-card className="relative mb-10 sm:mb-12 last:mb-0">
+              <span className="absolute -left-[2.05rem] sm:-left-[2.6rem] top-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-accent rounded-full border-[3px] sm:border-4 border-white dark:border-[#0f172a] shadow shadow-accent/50" />
 
-              <div className="glass-card p-6">
+              <div className="glass-card p-4 sm:p-6">
                 <span className="inline-block px-3 py-1 text-xs font-bold text-accent bg-accent/15 rounded-full mb-3">
                   {exp.period}
                 </span>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">{exp.role}</h3>
-                <p className="text-slate-400 dark:text-white/50 font-medium mt-1 mb-4">{exp.company}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">{exp.role}</h3>
+                <p className="text-slate-400 dark:text-white/50 font-medium mt-1 mb-3 sm:mb-4 text-sm sm:text-base">{exp.company}</p>
                 <ul className="space-y-2">
                   {exp.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-2 text-slate-400 dark:text-white/50 text-sm leading-relaxed">
