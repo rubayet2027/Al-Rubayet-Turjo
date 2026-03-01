@@ -50,12 +50,12 @@ export default function Contact() {
         <p data-contact-anim className="text-accent font-semibold mb-2 tracking-wide">
           Contact
         </p>
-        <h2 data-contact-anim className="font-display text-4xl md:text-5xl font-extrabold text-white mb-4">
+        <h2 data-contact-anim className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
           Let&apos;s Work Together
         </h2>
-        <p data-contact-anim className="text-white/50 text-lg mb-12 max-w-xl">
+        <p data-contact-anim className="text-slate-400 dark:text-white/50 text-lg mb-12 max-w-xl">
           Available for freelance projects worldwide.{' '}
-          <strong className="text-white">Replies within 12 hours.</strong>
+          <strong className="text-slate-900 dark:text-white">Replies within 12 hours.</strong>
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -67,7 +67,7 @@ export default function Contact() {
               { label: 'Telegram', value: '@rubayet2027', href: 'https://t.me/rubayet2027' },
             ].map((item) => (
               <div key={item.label} data-contact-anim className="glass-card p-4">
-                <p className="text-sm font-semibold text-white mb-1">{item.label}</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{item.label}</p>
                 <a
                   href={item.href}
                   target="_blank"
@@ -83,7 +83,7 @@ export default function Contact() {
           {/* Right — Form */}
           <form onSubmit={handleSubmit} className="glass-card p-6 space-y-5" data-contact-anim>
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-white mb-1">
+              <label htmlFor="name" className="block text-sm font-semibold text-slate-900 dark:text-white mb-1">
                 Name
               </label>
               <input
@@ -98,7 +98,7 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-white mb-1">
+              <label htmlFor="email" className="block text-sm font-semibold text-slate-900 dark:text-white mb-1">
                 Email
               </label>
               <input
@@ -113,7 +113,7 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-white mb-1">
+              <label htmlFor="message" className="block text-sm font-semibold text-slate-900 dark:text-white mb-1">
                 Message
               </label>
               <textarea

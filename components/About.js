@@ -36,21 +36,21 @@ export default function About() {
         <p data-about-anim className="text-accent font-semibold mb-2 tracking-wide">
           About Me
         </p>
-        <h2 data-about-anim className="font-display text-4xl md:text-5xl font-extrabold text-white mb-10">
+        <h2 data-about-anim className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10">
           Crafting Digital Experiences<br className="hidden md:block" /> That Scale.
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="space-y-5 text-white/60 leading-relaxed text-lg">
+          <div className="space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-lg">
             <p data-about-anim>
-              I&apos;m <strong className="text-white">Al Rubayet Turjo</strong> (Zero) — a passionate
+              I&apos;m <strong className="text-slate-900 dark:text-white">Al Rubayet Turjo</strong> (Zero) — a passionate
               Full Stack Web Developer &amp; AI Automation Specialist currently pursuing my BSc in
-              Computer Science &amp; Engineering at <strong className="text-white">CUET</strong>.
+              Computer Science &amp; Engineering at <strong className="text-slate-900 dark:text-white">CUET</strong>.
             </p>
             <p data-about-anim>
               My journey started with competitive programming in C++, which taught me to think in
               algorithms and optimize for performance. I represented my team at the{' '}
-              <strong className="text-white">BUET Inter-University Hackathon</strong>, building
+              <strong className="text-slate-900 dark:text-white">BUET Inter-University Hackathon</strong>, building
               real-time solutions under pressure.
             </p>
             <p data-about-anim>
@@ -61,21 +61,21 @@ export default function About() {
             </p>
           </div>
 
-          <div className="space-y-5 text-white/60 leading-relaxed text-lg">
+          <div className="space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-lg">
             <p data-about-anim>
-              I specialize in <strong className="text-white">AI automation</strong>: building
+              I specialize in <strong className="text-slate-900 dark:text-white">AI automation</strong>: building
               intelligent workflows that generate, schedule, and post content autonomously —
               saving hours of manual work for content creators and businesses.
             </p>
             <p data-about-anim>
               My long-term vision is to build a{' '}
-              <strong className="text-white">global tech agency</strong> that ships
+              <strong className="text-slate-900 dark:text-white">global tech agency</strong> that ships
               production-grade SaaS platforms and automation systems for clients worldwide.
             </p>
             <p data-about-anim>
-              Outside of programming, I enjoy playing <strong className="text-white">football</strong> and
-              <strong className="text-white">cricket</strong> with friends, sketching UI concepts on paper, and
-              exploring <strong className="text-white">photography</strong>. I&apos;m also a big fan of
+              Outside of programming, I enjoy playing <strong className="text-slate-900 dark:text-white">football</strong> and
+              <strong className="text-slate-900 dark:text-white">cricket</strong> with friends, sketching UI concepts on paper, and
+              exploring <strong className="text-slate-900 dark:text-white">photography</strong>. I&apos;m also a big fan of
               sci-fi movies and love traveling to new places whenever I get the chance.
             </p>
             <p data-about-anim>
@@ -98,7 +98,7 @@ export default function About() {
               className="glass-card glass-card-hover p-6 text-center"
             >
               <p className="font-display text-3xl font-extrabold text-accent">{num}</p>
-              <p className="text-sm text-white/50 mt-1 font-medium">{label}</p>
+              <p className="text-sm text-slate-400 dark:text-white/50 mt-1 font-medium">{label}</p>
             </div>
           ))}
         </div>

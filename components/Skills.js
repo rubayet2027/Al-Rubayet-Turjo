@@ -3,60 +3,65 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  SiReact, SiNextdotjs, SiTailwindcss, SiHtml5, SiCss3, SiJavascript, SiFramer,
+  SiNodedotjs, SiExpress, SiMongodb, SiFirebase, SiMysql, SiPostgresql,
+  SiOpenai, SiZapier, SiStripe, SiPython,
+  SiGit, SiGithub, SiVercel, SiPostman, SiLinux, SiFigma, SiNetlify, SiVscodium,
+} from 'react-icons/si';
+import { TbAutomation } from 'react-icons/tb';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const categories = [
+const stacks = [
   {
-    title: 'Frontend',
+    title: 'Frontend Stack',
+    icon: '🎨',
     skills: [
-      { name: 'React.js', level: 90 },
-      { name: 'Next.js', level: 85 },
-      { name: 'Tailwind CSS', level: 92 },
-      { name: 'HTML5 / CSS3', level: 95 },
-      { name: 'JavaScript (ES6+)', level: 88 },
-      { name: 'Framer Motion', level: 70 },
+      { name: 'React.js', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
+      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+      { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+      { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
+      { name: 'CSS3', icon: SiCss3, color: '#1572B6' },
+      { name: 'Framer Motion', icon: SiFramer, color: '#0055FF' },
     ],
   },
   {
-    title: 'Backend',
+    title: 'Backend Stack',
+    icon: '⚙️',
     skills: [
-      { name: 'Node.js', level: 85 },
-      { name: 'Express.js', level: 82 },
-      { name: 'REST APIs', level: 90 },
-      { name: 'Auth (JWT / OAuth)', level: 78 },
-      { name: 'WebSockets', level: 72 },
+      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'Express.js', icon: SiExpress, color: '#000000' },
+      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+      { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
     ],
   },
   {
-    title: 'Database',
+    title: 'Automation Stack',
+    icon: '🤖',
     skills: [
-      { name: 'MongoDB', level: 85 },
-      { name: 'MySQL', level: 75 },
-      { name: 'PostgreSQL', level: 72 },
-      { name: 'Mongoose ODM', level: 80 },
-      { name: 'Prisma ORM', level: 70 },
+      { name: 'OpenAI API', icon: SiOpenai, color: '#412991' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'n8n', icon: TbAutomation, color: '#EA4B71' },
+      { name: 'Zapier', icon: SiZapier, color: '#FF4A00' },
+      { name: 'Stripe', icon: SiStripe, color: '#635BFF' },
     ],
   },
   {
-    title: 'Automation & APIs',
+    title: 'Tools',
+    icon: '🛠️',
     skills: [
-      { name: 'OpenAI API', level: 82 },
-      { name: 'Gemini API', level: 78 },
-      { name: 'n8n Workflows', level: 75 },
-      { name: 'Zapier', level: 68 },
-      { name: 'Social Media APIs', level: 80 },
-    ],
-  },
-  {
-    title: 'Tools & DevOps',
-    skills: [
-      { name: 'Git & GitHub', level: 90 },
-      { name: 'VS Code', level: 95 },
-      { name: 'Vercel', level: 85 },
-      { name: 'Postman', level: 80 },
-      { name: 'Firebase', level: 72 },
-      { name: 'Linux', level: 65 },
+      { name: 'Git', icon: SiGit, color: '#F05032' },
+      { name: 'GitHub', icon: SiGithub, color: '#181717' },
+      { name: 'VS Code', icon: SiVscodium, color: '#007ACC' },
+      { name: 'Vercel', icon: SiVercel, color: '#000000' },
+      { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
+      { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+      { name: 'Netlify', icon: SiNetlify, color: '#00C7B7' },
+      { name: 'Linux', icon: SiLinux, color: '#FCC624' },
     ],
   },
 ];
@@ -89,33 +94,40 @@ export default function Skills() {
     >
       <div className="max-w-6xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Skills</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-12">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-12">
           Technologies I Work With
         </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((cat) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+          {stacks.map((stack) => (
             <div
-              key={cat.title}
+              key={stack.title}
               data-skill-card
               className="glass-card glass-card-hover p-6"
             >
-              <h3 className="text-lg font-bold text-white mb-4">{cat.title}</h3>
-              <div className="space-y-3">
-                {cat.skills.map((s) => (
-                  <div key={s.name}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium text-white/80">{s.name}</span>
-                      <span className="text-xs font-semibold text-white/50">{s.level}%</span>
-                    </div>
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-accent rounded-full transition-all duration-700"
-                        style={{ width: `${s.level}%` }}
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-5 flex items-center gap-2">
+                <span className="text-xl">{stack.icon}</span>
+                {stack.title}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {stack.skills.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <div
+                      key={s.name}
+                      className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 group"
+                    >
+                      <Icon
+                        size={20}
+                        style={{ color: s.color }}
+                        className="shrink-0 group-hover:scale-110 transition-transform duration-200"
                       />
+                      <span className="text-sm font-medium text-slate-700 dark:text-white/80 truncate">
+                        {s.name}
+                      </span>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

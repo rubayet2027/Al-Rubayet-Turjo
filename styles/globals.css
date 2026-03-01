@@ -2,30 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme Variables ── */
+:root {
+  --bg-gradient-from: #f8fafc;
+  --bg-gradient-mid: #e2e8f0;
+  --bg-gradient-to: #f8fafc;
+  --blob-opacity: 0.12;
+  --scrollbar-track: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-card-bg: rgba(255, 255, 255, 0.5);
+  --glass-card-border: rgba(0, 0, 0, 0.07);
+  --glass-card-hover-bg: rgba(255, 255, 255, 0.75);
+  --glass-card-hover-border: rgba(0, 0, 0, 0.14);
+  --glass-card-shadow: rgba(0, 0, 0, 0.06);
+  --glass-nav-bg: rgba(255, 255, 255, 0.5);
+  --glass-nav-border: rgba(0, 0, 0, 0.06);
+  --glass-input-bg: rgba(255, 255, 255, 0.55);
+  --glass-input-border: rgba(0, 0, 0, 0.1);
+  --glass-input-text: #0f172a;
+  --glass-input-placeholder: rgba(0, 0, 0, 0.4);
+  --timeline-dot-border: #f8fafc;
+}
+
+.dark {
+  --bg-gradient-from: #0f172a;
+  --bg-gradient-mid: #1e293b;
+  --bg-gradient-to: #0f172a;
+  --blob-opacity: 0.4;
+  --scrollbar-track: #1e293b;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-card-bg: rgba(255, 255, 255, 0.06);
+  --glass-card-border: rgba(255, 255, 255, 0.1);
+  --glass-card-hover-bg: rgba(255, 255, 255, 0.1);
+  --glass-card-hover-border: rgba(255, 255, 255, 0.2);
+  --glass-card-shadow: rgba(0, 0, 0, 0.3);
+  --glass-nav-bg: rgba(15, 23, 42, 0.6);
+  --glass-nav-border: rgba(255, 255, 255, 0.08);
+  --glass-input-bg: rgba(255, 255, 255, 0.06);
+  --glass-input-border: rgba(255, 255, 255, 0.12);
+  --glass-input-text: #f8fafc;
+  --glass-input-placeholder: rgba(255, 255, 255, 0.35);
+  --timeline-dot-border: #0f172a;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply text-text antialiased;
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-from) 0%, var(--bg-gradient-mid) 40%, var(--bg-gradient-to) 100%);
   min-height: 100vh;
+  @apply text-slate-900 dark:text-slate-100 antialiased;
 }
 
 /* ── Glassmorphism Utilities ── */
 .glass {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--glass-card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-card-border);
   border-radius: 1rem;
 }
 
@@ -33,28 +78,28 @@ body {
   transition: all 0.3s ease;
 }
 .glass-card-hover:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--glass-card-hover-bg);
+  border-color: var(--glass-card-hover-border);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px var(--glass-card-shadow);
 }
 
 .glass-nav {
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--glass-nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--glass-nav-border);
 }
 
 .glass-input {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--glass-input-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #f8fafc;
+  border: 1px solid var(--glass-input-border);
+  color: var(--glass-input-text);
 }
 .glass-input::placeholder {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--glass-input-placeholder);
 }
 .glass-input:focus {
   border-color: #2563eb;
@@ -76,7 +121,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.4;
+  opacity: var(--blob-opacity);
 }
 .bg-mesh::before {
   width: 600px;
@@ -106,7 +151,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
   background: #2563eb;

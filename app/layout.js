@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import LenisProvider from '@/components/LenisProvider';
+import ThemeProvider from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 
 /* ── SEO Metadata (Next.js 14 Metadata API) ── */
@@ -40,7 +41,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark">
       <head>
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,10 +54,12 @@ export default function RootLayout({ children }) {
       <body className="overflow-x-hidden">
         {/* Animated gradient mesh background for glassmorphism depth */}
         <div className="bg-mesh" aria-hidden="true" />
-        <LenisProvider>
-          <Navbar />
-          <main>{children}</main>
-        </LenisProvider>
+        <ThemeProvider>
+          <LenisProvider>
+            <Navbar />
+            <main>{children}</main>
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

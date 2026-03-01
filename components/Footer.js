@@ -50,7 +50,7 @@ export default function Footer() {
           <p className="font-display text-2xl font-bold mb-3">
             Zero<span className="text-accent">.</span>
           </p>
-          <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+          <p className="text-slate-500 dark:text-white/60 text-sm leading-relaxed max-w-xs">
             Full Stack Web Developer &amp; AI Automation Specialist building scalable
             digital products for clients worldwide.
           </p>
@@ -67,7 +67,7 @@ export default function Footer() {
                 <a
                   href={link.href}
                   onClick={(e) => scrollTo(e, link.href)}
-                  className="text-white/60 hover:text-accent text-sm transition-colors"
+                  className="text-slate-500 dark:text-white/60 hover:text-accent text-sm transition-colors"
                 >
                   {link.label}
                 </a>
@@ -82,14 +82,14 @@ export default function Footer() {
             Connect
           </p>
           <SocialLinks />
-          <p className="text-white/40 text-xs mt-6">
+          <p className="text-slate-400 dark:text-white/40 text-xs mt-6">
             rubayetofficial2027@gmail.com
           </p>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/10 text-center">
-        <p className="text-white/40 text-sm">
+      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-slate-200 dark:border-white/10 text-center">
+        <p className="text-slate-400 dark:text-white/40 text-sm">
           © {new Date().getFullYear()} Al Rubayet Turjo. All rights reserved.
         </p>
       </div>
