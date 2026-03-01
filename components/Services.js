@@ -66,18 +66,22 @@ export default function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('[data-service-card]', {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      gsap.fromTo(
+        '[data-service-card]',
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -86,14 +90,14 @@ export default function Services() {
     <section id="services" ref={sectionRef} className="section-padding">
       <div className="max-w-6xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Services</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
           What I Do
         </h2>
-        <p className="text-slate-500 dark:text-white/60 text-lg mb-14 max-w-2xl">
+        <p className="text-slate-500 dark:text-white/60 text-base sm:text-lg mb-10 sm:mb-14 max-w-2xl">
           From frontend polish to backend muscle — I deliver end-to-end solutions that help businesses scale.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (

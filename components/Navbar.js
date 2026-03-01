@@ -24,8 +24,9 @@ export default function Navbar() {
 
   /* ── GSAP fade-in on load ── */
   useEffect(() => {
-    gsap.from(navRef.current, {
-      y: -30,
+    gsap.fromTo(navRef.current, { y: -30, opacity: 0 }, {
+      y: 0,
+      opacity: 1,
       duration: 0.8,
       ease: 'power3.out',
     });

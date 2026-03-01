@@ -63,7 +63,7 @@ export default function Experience() {
     >
       <div className="max-w-5xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Experience</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-12">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-12">
           Professional Journey
         </h2>
 

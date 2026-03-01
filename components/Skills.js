@@ -99,11 +99,11 @@ export default function Skills() {
     >
       <div className="max-w-6xl mx-auto">
         <p className="text-accent font-semibold mb-2 tracking-wide">Skills</p>
-        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-12">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-14">
           Technologies I Work With
         </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           {stacks.map((stack) => (
             <div
               key={stack.title}

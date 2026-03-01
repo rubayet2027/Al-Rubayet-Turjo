@@ -81,7 +81,7 @@ export default function Contact() {
         <p data-contact-anim className="text-accent font-semibold mb-2 tracking-wide">
           Contact
         </p>
-        <h2 data-contact-anim className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
+        <h2 data-contact-anim className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
           Let&apos;s Work Together
         </h2>
         <p data-contact-anim className="text-slate-400 dark:text-white/50 text-lg mb-12 max-w-xl">
@@ -89,7 +89,7 @@ export default function Contact() {
           <strong className="text-slate-900 dark:text-white">Replies within 12 hours.</strong>
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Left — Info */}
           <div className="space-y-6">
             {contactItems.map((item) => {

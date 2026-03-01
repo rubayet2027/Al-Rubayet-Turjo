@@ -41,11 +41,11 @@ export default function About() {
         <p data-about-anim className="text-accent font-semibold mb-2 tracking-wide">
           About Me
         </p>
-        <h2 data-about-anim className="font-display text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10">
+        <h2 data-about-anim className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-8 sm:mb-10">
           Crafting Digital Experiences<br className="hidden md:block" /> That Scale.
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div className="space-y-5 text-slate-500 dark:text-white/60 leading-relaxed text-lg">
             <p data-about-anim>
               I&apos;m <strong className="text-slate-900 dark:text-white">Al Rubayet Turjo</strong> (Zero) — a passionate
