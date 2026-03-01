@@ -71,17 +71,22 @@ export default function Skills() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('[data-skill-card]', {
-        y: 60,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 78%',
-        },
-      });
+      gsap.fromTo(
+        '[data-skill-card]',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);

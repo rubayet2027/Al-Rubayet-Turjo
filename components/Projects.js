@@ -14,17 +14,22 @@ export default function Projects() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('[data-project-card]', {
-        y: 70,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 78%',
-        },
-      });
+      gsap.fromTo(
+        '[data-project-card]',
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);

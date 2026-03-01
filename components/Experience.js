@@ -35,17 +35,22 @@ export default function Experience() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('[data-exp-card]', {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
-      });
+      gsap.fromTo(
+        '[data-exp-card]',
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);

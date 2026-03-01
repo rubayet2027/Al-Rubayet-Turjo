@@ -36,7 +36,7 @@ export default function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 section-padding pt-32 relative"
+      className="h-screen flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-14 px-6 md:px-12 lg:px-20 pt-20 pb-6 relative overflow-hidden"
     >
       {/* ── Left: Text ── */}
       <div className="flex-1 max-w-2xl">
@@ -85,11 +85,14 @@ export default function Hero() {
 
       {/* ── Right: Image ── */}
       <div ref={imgRef} className="flex-1 flex items-center justify-center lg:justify-end">
-        <img
-          src="/profile.png"
-          alt="Al Rubayet Turjo — Full Stack Developer"
-          className="w-full max-w-sm lg:max-w-md xl:max-w-lg h-auto object-contain drop-shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:drop-shadow-[0_25px_50px_rgba(37,99,235,0.45)] transition-all duration-700"
-        />
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full bg-accent/20 blur-3xl scale-110" />
+          <img
+            src="/profile.png"
+            alt="Al Rubayet Turjo — Full Stack Developer"
+            className="relative w-full max-w-xs lg:max-w-sm xl:max-w-md h-auto object-contain rounded-full border-4 border-white/20 dark:border-white/10 shadow-[0_8px_32px_rgba(37,99,235,0.35)] backdrop-blur-sm bg-white/5 dark:bg-white/5 hover:shadow-[0_12px_48px_rgba(37,99,235,0.5)] transition-all duration-700"
+          />
+        </div>
       </div>
     </section>
   );

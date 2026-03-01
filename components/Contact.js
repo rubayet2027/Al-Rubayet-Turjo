@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FiMail, FiPhone, FiSend } from 'react-icons/fi';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,17 +14,22 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('[data-contact-anim]', {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
-      });
+      gsap.fromTo(
+        '[data-contact-anim]',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -33,12 +39,59 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    // Simulated send — replace with actual API call
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus('success');
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setStatus('idle'), 4000);
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        // Fallback: open mailto
+        const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+        const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+        window.open(`mailto:rubayetofficial2027@gmail.com?subject=${subject}&body=${body}`, '_self');
+        setStatus('success');
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch {
+      // Fallback: open mailto
+      const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+      const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+      window.open(`mailto:rubayetofficial2027@gmail.com?subject=${subject}&body=${body}`, '_self');
+      setStatus('success');
+      setForm({ name: '', email: '', message: '' });
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
+
+  const contactItems = [
+    {
+      label: 'Email',
+      value: 'rubayetofficial2027@gmail.com',
+      href: 'mailto:rubayetofficial2027@gmail.com',
+      icon: FiMail,
+      color: '#EA4335',
+    },
+    {
+      label: 'WhatsApp',
+      value: '+880 1633-707780',
+      href: 'https://wa.me/8801633707780',
+      icon: FiPhone,
+      color: '#25D366',
+    },
+    {
+      label: 'Telegram',
+      value: '@rubayet2027',
+      href: 'https://t.me/rubayet2027',
+      icon: FiSend,
+      color: '#0088CC',
+    },
+  ];
 
   return (
     <section
@@ -61,23 +114,32 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left — Info */}
           <div className="space-y-6">
-            {[
-              { label: 'Email', value: 'rubayetofficial2027@gmail.com', href: 'mailto:rubayetofficial2027@gmail.com' },
-              { label: 'WhatsApp', value: '+880 1633-707780', href: 'https://wa.me/8801633707780' },
-              { label: 'Telegram', value: '@rubayet2027', href: 'https://t.me/rubayet2027' },
-            ].map((item) => (
-              <div key={item.label} data-contact-anim className="glass-card p-4">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{item.label}</p>
+            {contactItems.map((item) => {
+              const Icon = item.icon;
+              return (
                 <a
+                  key={item.label}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent hover:underline font-medium"
+                  data-contact-anim
+                  className="glass-card glass-card-hover p-5 flex items-center gap-4 group"
                 >
-                  {item.value}
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-110"
+                    style={{ background: `${item.color}15` }}
+                  >
+                    <Icon size={22} style={{ color: item.color }} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white mb-0.5">{item.label}</p>
+                    <p className="text-accent font-medium text-sm group-hover:underline">
+                      {item.value}
+                    </p>
+                  </div>
                 </a>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Right — Form */}
