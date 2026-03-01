@@ -126,7 +126,7 @@ export const projectsData = [
     description:
       'A skill exchange marketplace where users can discover local and remote skill providers, book sessions, and offer their own expertise — from guitar lessons to photography to coding.',
     tech: ['React.js', 'Firebase', 'Vite', 'Tailwind CSS', 'Node.js'],
-    image: null,
+    image: '/SkillSwap.png',
     problem:
       'Finding affordable, personalized skill learning opportunities is difficult, and talented individuals lack a platform to monetize their expertise through peer-to-peer teaching.',
     solution:
