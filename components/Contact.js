@@ -36,37 +36,15 @@ export default function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('sending');
-    try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      if (res.ok) {
-        setStatus('success');
-        setForm({ name: '', email: '', message: '' });
-        setTimeout(() => setStatus('idle'), 4000);
-      } else {
-        // Fallback: open mailto
-        const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-        const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-        window.open(`mailto:rubayetofficial2027@gmail.com?subject=${subject}&body=${body}`, '_self');
-        setStatus('success');
-        setForm({ name: '', email: '', message: '' });
-        setTimeout(() => setStatus('idle'), 4000);
-      }
-    } catch {
-      // Fallback: open mailto
-      const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-      const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-      window.open(`mailto:rubayetofficial2027@gmail.com?subject=${subject}&body=${body}`, '_self');
-      setStatus('success');
-      setForm({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
-    }
+    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+    window.open(`mailto:rubayetofficial2027@gmail.com?subject=${subject}&body=${body}`, '_self');
+    setStatus('success');
+    setForm({ name: '', email: '', message: '' });
+    setTimeout(() => setStatus('idle'), 4000);
   };
 
   const contactItems = [
