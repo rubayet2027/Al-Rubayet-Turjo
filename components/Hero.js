@@ -82,14 +82,14 @@ export default function Hero() {
         <SocialLinks />
       </div>
 
-      {/* ── Right: Image (50% of hero width) ── */}
-      <div ref={imgRef} className="w-1/2 flex-shrink-0 flex items-center justify-center lg:justify-end">
-        <div className="relative w-full max-w-[32rem] aspect-square">
+      {/* ── Right: Image ── */}
+      <div ref={imgRef} className="flex-shrink-0 flex items-center justify-center lg:justify-end">
+        <div className="relative">
           <div className="absolute inset-[-25%] rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" />
           <img
             src="/profile.png"
             alt="Al Rubayet Turjo — Full Stack Developer"
-            className="relative w-full h-full object-contain rounded-full shadow-xl transition-all duration-700"
+            className="relative w-60 sm:w-72 md:w-80 lg:w-96 xl:w-[26rem] h-auto object-contain rounded-full shadow-xl transition-all duration-700"
           />
         </div>
       </div>
