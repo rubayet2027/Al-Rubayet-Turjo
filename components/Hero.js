@@ -82,7 +82,7 @@ export default function Hero() {
         animate="show"
       >
         <div className="relative">
-          <div className="absolute inset-[-25%] rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" />
+          <div className="absolute inset-[-10%] rounded-full bg-accent/15 dark:bg-accent/10 blur-2xl" />
           <img
             src="/profile.png"
             alt="Al Rubayet Turjo — Full Stack Developer"
