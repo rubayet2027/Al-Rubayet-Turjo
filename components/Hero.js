@@ -86,7 +86,7 @@ export default function Hero() {
           <img
             src="/profile.png"
             alt="Al Rubayet Turjo — Full Stack Developer"
-            className="relative w-60 sm:w-72 md:w-80 lg:w-96 xl:w-[26rem] h-auto object-contain rounded-full shadow-xl transition-all duration-700"
+            className="relative w-60 sm:w-72 md:w-80 lg:w-96 xl:w-[26rem] h-auto object-contain rounded-full transition-all duration-700"
           />
         </div>
       </motion.div>
