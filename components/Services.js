@@ -1,14 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  SiReact, SiNextdotjs, SiNodedotjs, SiMongodb, SiStripe, SiFirebase,
-} from 'react-icons/si';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { FiLayout, FiServer, FiLayers, FiPackage, FiSmartphone, FiCpu } from 'react-icons/fi';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -61,49 +55,58 @@ const services = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
 export default function Services() {
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-service-card]',
-        { y: 80, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const isInView = useInView(sectionRef, { once: true, margin: '-60px' });
 
   return (
     <section id="services" ref={sectionRef} className="section-padding">
       <div className="max-w-6xl mx-auto">
-        <p className="text-accent font-semibold mb-2 tracking-wide">Services</p>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-accent font-semibold mb-2 tracking-wide"
+        >
+          Services
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4"
+        >
           What I Do
-        </h2>
-        <p className="text-slate-500 dark:text-white/60 text-base sm:text-lg mb-10 sm:mb-14 max-w-2xl">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-slate-500 dark:text-white/60 text-base sm:text-lg mb-10 sm:mb-14 max-w-2xl"
+        >
           From frontend polish to backend muscle — I deliver end-to-end solutions that help businesses scale.
-        </p>
+        </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {services.map((service) => {
+          {services.map((service, i) => {
             const Icon = service.icon;
             return (
-              <div
+              <motion.div
                 key={service.title}
-                data-service-card
+                variants={cardVariants}
+                custom={i}
+                initial="hidden"
+                animate={isInView ? 'visible' : 'hidden'}
                 className="glass-card glass-card-hover p-5 sm:p-6 lg:p-7 group"
               >
                 {/* Icon */}
@@ -132,7 +135,7 @@ export default function Services() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

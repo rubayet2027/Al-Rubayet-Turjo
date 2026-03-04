@@ -1,38 +1,24 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion, useInView } from 'framer-motion';
 
 import { projectsData } from '@/data/projects';
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
 export default function Projects() {
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-project-card]',
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const isInView = useInView(sectionRef, { once: true, margin: '-60px' });
 
   return (
     <section
@@ -41,16 +27,31 @@ export default function Projects() {
       className="section-padding"
     >
       <div className="max-w-6xl mx-auto">
-        <p className="text-accent font-semibold mb-2 tracking-wide">Projects</p>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-12">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-accent font-semibold mb-2 tracking-wide"
+        >
+          Projects
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-12"
+        >
           Featured Work
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {projectsData.map((project) => (
-            <div
+          {projectsData.map((project, i) => (
+            <motion.div
               key={project.slug}
-              data-project-card
+              variants={cardVariants}
+              custom={i}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
               className="group glass-card glass-card-hover overflow-hidden"
             >
               {/* Project Image */}
@@ -100,7 +101,7 @@ export default function Projects() {
                   </svg>
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

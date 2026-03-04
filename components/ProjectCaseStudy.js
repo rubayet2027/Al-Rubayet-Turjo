@@ -1,28 +1,20 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
-import { gsap } from 'gsap';
+import { motion } from 'framer-motion';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
 
 export default function ProjectCaseStudy({ project }) {
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-cs-anim]',
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-        }
-      );
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
 
   if (!project) {
     return (
@@ -36,9 +28,9 @@ export default function ProjectCaseStudy({ project }) {
     <div ref={containerRef} className="min-h-screen pt-28 pb-20 section-padding">
       <div className="max-w-4xl mx-auto">
         {/* Back link */}
+        <motion.div variants={fadeUp} custom={0} initial="hidden" animate="visible">
         <Link
           href="/#projects"
-          data-cs-anim
           className="inline-flex items-center gap-1 text-accent font-semibold text-sm hover:underline mb-8"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -46,25 +38,29 @@ export default function ProjectCaseStudy({ project }) {
           </svg>
           Back to Projects
         </Link>
+        </motion.div>
 
         {/* Header */}
-        <h1 data-cs-anim className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-3">
+        <motion.h1 variants={fadeUp} custom={1} initial="hidden" animate="visible" className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-3">
           {project.title}
-        </h1>
-        <p data-cs-anim className="text-base sm:text-lg md:text-xl text-slate-400 dark:text-white/50 mb-6 sm:mb-8">{project.tagline}</p>
+        </motion.h1>
+        <motion.p variants={fadeUp} custom={2} initial="hidden" animate="visible" className="text-base sm:text-lg md:text-xl text-slate-400 dark:text-white/50 mb-6 sm:mb-8">{project.tagline}</motion.p>
 
         {/* Tech stack */}
-        <div data-cs-anim className="flex flex-wrap gap-2 mb-10">
+        <motion.div variants={fadeUp} custom={3} initial="hidden" animate="visible" className="flex flex-wrap gap-2 mb-10">
           {project.tech.map((t) => (
             <span key={t} className="px-3 py-1.5 text-sm font-medium bg-accent/15 text-accent rounded-lg">
               {t}
             </span>
           ))}
-        </div>
+        </motion.div>
 
         {/* Project Image */}
-        <div
-          data-cs-anim
+        <motion.div
+          variants={fadeUp}
+          custom={4}
+          initial="hidden"
+          animate="visible"
           className="h-48 sm:h-64 md:h-80 rounded-2xl glass-card overflow-hidden mb-8 sm:mb-12 bg-gradient-to-br from-accent/10 to-transparent"
         >
           {project.image ? (
@@ -78,27 +74,27 @@ export default function ProjectCaseStudy({ project }) {
               <span className="text-accent/40 font-display text-2xl font-bold">Project Screenshot</span>
             </div>
           )}
-        </div>
+        </motion.div>
 
         {/* Description */}
-        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+        <motion.div variants={fadeUp} custom={5} initial="hidden" animate="visible" className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
           <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">About This Project</h2>
           <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{project.description}</p>
-        </div>
+        </motion.div>
 
         {/* Sections */}
         {[
           { heading: 'Problem Statement', body: project.problem },
           { heading: 'Solution', body: project.solution },
-        ].map(({ heading, body }) => (
-          <div key={heading} data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+        ].map(({ heading, body }, idx) => (
+          <motion.div key={heading} variants={fadeUp} custom={6 + idx} initial="hidden" animate="visible" className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
             <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">{heading}</h2>
             <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{body}</p>
-          </div>
+          </motion.div>
         ))}
 
         {/* Key Features */}
-        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+        <motion.div variants={fadeUp} custom={8} initial="hidden" animate="visible" className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
           <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">Key Features</h2>
           <ul className="space-y-3">
             {project.features.map((f, i) => (
@@ -108,22 +104,22 @@ export default function ProjectCaseStudy({ project }) {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* Challenges */}
-        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
+        <motion.div variants={fadeUp} custom={9} initial="hidden" animate="visible" className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-10">
           <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Challenges</h2>
           <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{project.challenges}</p>
-        </div>
+        </motion.div>
 
         {/* Future Improvements */}
-        <div data-cs-anim className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-12">
+        <motion.div variants={fadeUp} custom={10} initial="hidden" animate="visible" className="glass-card p-5 sm:p-6 md:p-8 mb-8 sm:mb-12">
           <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Future Improvements</h2>
           <p className="text-slate-500 dark:text-white/60 leading-relaxed text-base sm:text-lg">{project.future}</p>
-        </div>
+        </motion.div>
 
         {/* Links */}
-        <div data-cs-anim className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+        <motion.div variants={fadeUp} custom={11} initial="hidden" animate="visible" className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a
             href={project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : '#'}
             target="_blank"
@@ -144,7 +140,7 @@ export default function ProjectCaseStudy({ project }) {
           >
             View on GitHub
           </a>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

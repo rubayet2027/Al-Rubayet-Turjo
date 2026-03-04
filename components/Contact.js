@@ -1,38 +1,23 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { FiMail, FiPhone, FiSend } from 'react-icons/fi';
 
-gsap.registerPlugin(ScrollTrigger);
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
 
 export default function Contact() {
   const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-60px' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-contact-anim]',
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -78,29 +63,32 @@ export default function Contact() {
       className="section-padding"
     >
       <div className="max-w-5xl mx-auto">
-        <p data-contact-anim className="text-accent font-semibold mb-2 tracking-wide">
+        <motion.p variants={fadeUp} custom={0} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="text-accent font-semibold mb-2 tracking-wide">
           Contact
-        </p>
-        <h2 data-contact-anim className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
+        </motion.p>
+        <motion.h2 variants={fadeUp} custom={1} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
           Let&apos;s Work Together
-        </h2>
-        <p data-contact-anim className="text-slate-400 dark:text-white/50 text-base sm:text-lg mb-8 sm:mb-12 max-w-xl">
+        </motion.h2>
+        <motion.p variants={fadeUp} custom={2} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="text-slate-400 dark:text-white/50 text-base sm:text-lg mb-8 sm:mb-12 max-w-xl">
           Available for freelance projects worldwide.{' '}
           <strong className="text-slate-900 dark:text-white">Replies within 12 hours.</strong>
-        </p>
+        </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
           {/* Left — Info */}
           <div className="space-y-6">
-            {contactItems.map((item) => {
+            {contactItems.map((item, index) => {
               const Icon = item.icon;
               return (
-                <a
+                <motion.a
                   key={item.label}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-contact-anim
+                  variants={fadeUp}
+                  custom={3 + index}
+                  initial="hidden"
+                  animate={isInView ? 'visible' : 'hidden'}
                   className="glass-card glass-card-hover p-5 flex items-center gap-4 group"
                 >
                   <div
@@ -115,13 +103,13 @@ export default function Contact() {
                       {item.value}
                     </p>
                   </div>
-                </a>
+                </motion.a>
               );
             })}
           </div>
 
           {/* Right — Form */}
-          <form onSubmit={handleSubmit} className="glass-card p-4 sm:p-6 space-y-4 sm:space-y-5" data-contact-anim>
+          <motion.form onSubmit={handleSubmit} variants={fadeUp} custom={6} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="glass-card p-4 sm:p-6 space-y-4 sm:space-y-5">
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-slate-900 dark:text-white mb-1">
                 Name
@@ -181,7 +169,7 @@ export default function Contact() {
                 ✓ Message sent! I&apos;ll get back to you within 12 hours.
               </p>
             )}
-          </form>
+          </motion.form>
         </div>
       </div>
     </section>

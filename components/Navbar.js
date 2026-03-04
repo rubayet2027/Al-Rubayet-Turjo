@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useTheme } from './ThemeProvider';
 
@@ -22,16 +22,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  /* ── GSAP fade-in on load ── */
-  useEffect(() => {
-    gsap.fromTo(navRef.current, { y: -30, opacity: 0 }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-    });
-  }, []);
-
   /* ── Glass background on scroll ── */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -48,8 +38,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav
+    <motion.nav
       ref={navRef}
+      initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
           ? 'glass-nav shadow-lg shadow-black/10 dark:shadow-black/20'
@@ -142,32 +135,49 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="lg:hidden glass border-t border-slate-200 dark:border-white/10 animate-fade-in">
-          <ul className="flex flex-col items-center gap-1 py-4">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={(e) => handleClick(e, item.href)}
-                  className="block px-6 py-3 min-h-[44px] text-base font-semibold text-slate-600 dark:text-white/70 hover:text-accent transition-colors"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:hidden glass border-t border-slate-200 dark:border-white/10 overflow-hidden"
+          >
+            <ul className="flex flex-col items-center gap-1 py-4">
+              {navItems.map((item, i) => (
+                <motion.li
+                  key={item.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.04, duration: 0.3 }}
                 >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-            <li>
-              <a
-                href="#contact"
-                onClick={(e) => handleClick(e, '#contact')}
-                className="inline-block mt-2 px-6 py-3 min-h-[44px] bg-accent text-white font-bold rounded-lg"
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleClick(e, item.href)}
+                    className="block px-6 py-3 min-h-[44px] text-base font-semibold text-slate-600 dark:text-white/70 hover:text-accent transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </motion.li>
+              ))}
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.04, duration: 0.3 }}
               >
-                Hire Me
-              </a>
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+                <a
+                  href="#contact"
+                  onClick={(e) => handleClick(e, '#contact')}
+                  className="inline-block mt-2 px-6 py-3 min-h-[44px] bg-accent text-white font-bold rounded-lg"
+                >
+                  Hire Me
+                </a>
+              </motion.li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }

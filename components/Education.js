@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const educationData = [
   {
@@ -29,30 +26,18 @@ const educationData = [
   },
 ];
 
+const slideIn = {
+  hidden: { opacity: 0, x: -60 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, delay: i * 0.2, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
 export default function Education() {
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-edu-card]',
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
     <section
@@ -61,14 +46,33 @@ export default function Education() {
       className="section-padding"
     >
       <div className="max-w-5xl mx-auto">
-        <p className="text-accent font-semibold mb-2 tracking-wide">Education</p>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-12">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-accent font-semibold mb-2 tracking-wide"
+        >
+          Education
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-12"
+        >
           Academic Background
-        </h2>
+        </motion.h2>
 
         <div className="relative border-l-2 border-accent/30 pl-6 sm:pl-8 ml-3 sm:ml-4">
           {educationData.map((edu, i) => (
-            <div key={i} data-edu-card className="relative mb-10 sm:mb-12 last:mb-0">
+            <motion.div
+              key={i}
+              variants={slideIn}
+              custom={i}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              className="relative mb-10 sm:mb-12 last:mb-0"
+            >
               {/* Timeline dot */}
               <span className="absolute -left-[2.05rem] sm:-left-[2.6rem] top-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-accent rounded-full border-[3px] sm:border-4 border-white dark:border-[#0f172a] shadow shadow-accent/50" />
 
@@ -87,7 +91,7 @@ export default function Education() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

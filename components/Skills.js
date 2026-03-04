@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import {
   SiReact, SiNextdotjs, SiTailwindcss, SiHtml5, SiCss3, SiJavascript, SiFramer,
   SiNodedotjs, SiExpress, SiMongodb, SiFirebase, SiMysql, SiPostgresql,
@@ -10,8 +9,6 @@ import {
   SiGit, SiGithub, SiVercel, SiPostman, SiLinux, SiFigma, SiNetlify, SiVscodium,
 } from 'react-icons/si';
 import { TbAutomation } from 'react-icons/tb';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const stacks = [
   {
@@ -66,30 +63,18 @@ const stacks = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
 export default function Skills() {
   const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-skill-card]',
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
     <section
@@ -98,16 +83,31 @@ export default function Skills() {
       className="section-padding"
     >
       <div className="max-w-6xl mx-auto">
-        <p className="text-accent font-semibold mb-2 tracking-wide">Skills</p>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-14">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-accent font-semibold mb-2 tracking-wide"
+        >
+          Skills
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-10 sm:mb-14"
+        >
           Technologies I Work With
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-          {stacks.map((stack) => (
-            <div
+          {stacks.map((stack, i) => (
+            <motion.div
               key={stack.title}
-              data-skill-card
+              variants={cardVariants}
+              custom={i}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
               className="glass-card glass-card-hover p-4 sm:p-6"
             >
               <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-4 sm:mb-5 flex items-center gap-2">
@@ -134,7 +134,7 @@ export default function Skills() {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
