@@ -1,7 +1,55 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SocialLinks from './SocialLinks';
+
+/* ── Typing hook ── */
+const lines = ['Full Stack Developer', 'for Modern SaaS', '& Automation'];
+
+function useTypingEffect(lines, charSpeed = 60, lineDelay = 400, startDelay = 600) {
+  const [displayed, setDisplayed] = useState([]);
+
+  useEffect(() => {
+    let timeout;
+    let lineIdx = 0;
+    let charIdx = 0;
+    let current = lines.map(() => '');
+
+    const type = () => {
+      if (lineIdx >= lines.length) return;
+
+      if (charIdx <= lines[lineIdx].length) {
+        current = [...current];
+        current[lineIdx] = lines[lineIdx].slice(0, charIdx);
+        setDisplayed([...current]);
+        charIdx++;
+        timeout = setTimeout(type, charSpeed);
+      } else {
+        lineIdx++;
+        charIdx = 0;
+        timeout = setTimeout(type, lineDelay);
+      }
+    };
+
+    timeout = setTimeout(type, startDelay);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return displayed;
+}
+
+/* ── Blinking cursor ── */
+function Cursor({ visible }) {
+  if (!visible) return null;
+  return (
+    <motion.span
+      className="inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 align-middle rounded-sm"
+      animate={{ opacity: [1, 0] }}
+      transition={{ duration: 0.6, repeat: Infinity, repeatType: 'reverse' }}
+    />
+  );
+}
 
 const container = {
   hidden: {},
@@ -19,6 +67,9 @@ const scaleIn = {
 };
 
 export default function Hero() {
+  const typed = useTypingEffect(lines);
+  const isComplete = typed.length === lines.length && typed[lines.length - 1] === lines[lines.length - 1];
+
   return (
     <section
       id="home"
@@ -36,9 +87,9 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1 variants={fadeUp} className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-6.5xl font-extrabold text-slate-900 dark:text-white leading-[1.08] mb-4 sm:mb-6">
-          <span className="block">Full Stack Developer</span>
-          <span className="block">for Modern SaaS</span>
-          <span className="block text-accent">&amp; Automation</span>
+          <span className="block">{typed[0] || ''}<Cursor visible={!isComplete && typed.length > 0 && (typed[0] || '') !== lines[0]} /></span>
+          <span className="block">{typed[1] || ''}<Cursor visible={!isComplete && (typed[0] === lines[0]) && (typed[1] || '') !== lines[1]} /></span>
+          <span className="block text-accent">{typed[2] || ''}<Cursor visible={!isComplete && (typed[1] === lines[1])} /></span>
         </motion.h1>
 
         <motion.p variants={fadeUp} className="text-base sm:text-lg md:text-xl text-slate-500 dark:text-white/60 max-w-lg mb-6 sm:mb-8 leading-relaxed">
